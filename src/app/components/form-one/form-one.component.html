@@ -1,0 +1,26 @@
+<div class="container">
+  <form class="form-control" #form="ngForm">
+    <legend>Bio Information</legend>
+    <label>FirstName</label>
+    <input class="form-control" type="text" name="firstName" [(ngModel)] = "person.firstName">
+    <label>LastName</label>
+    <input class="form-control" type="text" name="lastName" [(ngModel)] = "person.lastName">
+    <label>Date of Birth</label>
+    <input class="form-control" type="date" name="DOB" [(ngModel)] = "person.DOB" (ngModelChange)="changeDoB($event)">
+    <div><label >US Citizen<input type="checkbox" name="citizen" [(ngModel)]="person.citizen"></label></div>
+    <div>
+      <label >Male<input class="custom-radio" type="radio" name="gender" value="male" [(ngModel)]="person.gender" ></label>
+    </div>
+    <div>
+      <label >Female<input class="custom-radio" type="radio" name="gender" checked value="female" [(ngModel)]="person.gender"></label>
+    </div>
+    <div>
+      <select name="state" [(ngModel)]="person.language">
+        <option *ngFor="let language of languages">{{language}}</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" (click)="submit()">Submit</button>
+  </form>
+
+  <div>Angular: {{form.value | json}}</div>
+</div>
